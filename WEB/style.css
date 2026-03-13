@@ -1,0 +1,65 @@
+/* Reset básico */
+body { 
+    margin: 0; 
+    padding: 0; 
+    background-color: #0b0e14; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    color: #fff; 
+}
+
+#map { 
+    position: absolute; 
+    top: 0; 
+    bottom: 0; 
+    width: 100%; 
+    z-index: 0; 
+}
+
+/* Panel de información (HUD) */
+.hud {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(15, 23, 42, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #22d3ee;
+    z-index: 1000;
+    pointer-events: none; /* Para que no moleste al hacer click en el mapa */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
+}
+
+.hud h1 { 
+    margin: 0; 
+    font-size: 16px; 
+    color: #22d3ee; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+}
+
+.hud p { 
+    margin: 5px 0 0; 
+    font-size: 12px; 
+    color: #94a3b8; 
+}
+
+#counter { 
+    font-size: 24px; 
+    font-weight: bold; 
+    color: #4ade80; 
+    margin-top: 10px; 
+    display: block; 
+}
+
+/* Diseño de los globos de información (Popups) */
+.leaflet-popup-content-wrapper { 
+    background: #0f172a !important; 
+    color: #fff !important; 
+    border: 1px solid #22d3ee;
+    font-family: monospace;
+}
+
+.leaflet-popup-tip { 
+    background: #22d3ee !important; 
+}
