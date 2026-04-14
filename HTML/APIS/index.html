@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeriesFlow | Personal Vault</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="glass-nav">
+        <div class="container mx-auto px-6 flex justify-between items-center h-20">
+            <div class="logo">SERIES<span>FLOW</span></div>
+            
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Buscar y añadir serie..." autocomplete="off">
+                <div id="search-results" class="search-results hidden"></div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-6 pt-32 pb-12">
+        <div class="flex justify-between items-end mb-8">
+            <div>
+                <span class="text-indigo-500 font-bold tracking-widest text-xs uppercase">Tu Biblioteca</span>
+                <h2 class="text-4xl font-extrabold mt-1">Imprescindibles</h2>
+            </div>
+            <button onclick="clearLibrary()" class="text-gray-500 hover:text-red-500 text-sm transition">Limpiar Biblioteca</button>
+        </div>
+        
+        <div id="series-grid" class="series-grid">
+            </div>
+    </main>
+
+    <div id="modal" class="modal-overlay hidden">
+        <div class="modal-card">
+            <button onclick="closeModal()" class="close-btn">&times;</button>
+            
+            <div class="modal-flex">
+                <div class="modal-poster">
+                    <img id="modal-img" src="" alt="Poster">
+                    <div class="poster-overlay"></div>
+                </div>
+                
+                <div class="modal-info">
+                    <div class="flex justify-between items-start">
+                        <h2 id="modal-title" class="text-4xl font-black leading-tight"></h2>
+                        <span id="modal-rating" class="tag-score"></span>
+                    </div>
+                    
+                    <p id="modal-year" class="text-gray-500 font-medium mb-4"></p>
+
+                    <a id="btn-trailer" target="_blank" class="btn-video">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/></svg>
+                        Ver Tráiler Oficial
+                    </a>
+
+                    <div id="modal-summary" class="summary"></div>
+                    
+                    <div class="reviews-section">
+                        <h3 class="section-title">Reseñas de la Comunidad</h3>
+                        <div id="reviews-container" class="space-y-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

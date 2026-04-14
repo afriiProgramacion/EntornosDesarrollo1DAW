@@ -1,0 +1,62 @@
+body { 
+    margin: 0; 
+    padding: 0; 
+    background-color: #05070a; 
+    font-family: 'Courier New', Courier, monospace; 
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* El mapa de aviones ocupa la mitad superior */
+#map { 
+    flex: 1;
+    width: 100%; 
+    border-bottom: 2px solid #22d3ee;
+}
+
+/* El mapa de barcos ocupa la mitad inferior */
+.ship-container {
+    flex: 1;
+    width: 100%;
+    position: relative;
+    background: #000;
+}
+
+.ship-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(34, 211, 238, 0.2);
+    color: #22d3ee;
+    padding: 5px 20px;
+    font-size: 12px;
+    z-index: 10;
+    text-transform: uppercase;
+    border-bottom: 1px solid #22d3ee;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    filter: invert(90%) hue-rotate(180deg) brightness(1.2); /* Truco para que el mapa de barcos sea oscuro como el nuestro */
+}
+
+.hud {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: rgba(10, 15, 25, 0.9);
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #22d3ee;
+    z-index: 1000;
+    box-shadow: 0 0 15px rgba(34, 211, 238, 0.3);
+}
+
+.hud h1 { margin: 0; font-size: 14px; color: #22d3ee; }
+#counter { font-size: 18px; color: #4ade80; display: block; margin-top: 5px; }
+
+.leaflet-popup-content-wrapper { background: #0f172a !important; color: #22d3ee !important; border: 1px solid #22d3ee; }

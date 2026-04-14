@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radar Total Andalucía - Aire y Mar</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="hud">
+        <h1>Vigilancia Andalucía</h1>
+        <p>Tráfico Aéreo en Tiempo Real</p>
+        <span id="counter">Sincronizando...</span>
+    </div>
+
+    <div id="map"></div>
+
+    <div class="ship-container">
+        <div class="ship-header">Tráfico Marítimo (Estrecho y Alborán)</div>
+        <iframe 
+            name="vesselfinder" 
+            id="vesselfinder" 
+            src="https://www.vesselfinder.com/aismap?zoom=7&lat=36.3&lon=-5.3&theme=1&names=true" 
+            frameborder="0">
+        </iframe>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
