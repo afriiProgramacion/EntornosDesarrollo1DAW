@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Actividad 5_3 — Documentación</title>
+<style>body{font-family:Segoe UI,Arial,sans-serif;margin:20px;}pre{background:#f6f6f6;padding:12px;border-radius:8px;overflow:auto;}h1{margin-top:0;}h2{margin-top:22px;}</style>
+</head>
+<body>
+<h1>Actividad 5_3 — Documentación</h1>
+<h2>Módulo</h2>
+<pre>Actividad 5_3 — Comparación de optimización y documentación en Python.
+
+Objetivo
+Crear una aplicación con interfaz gráfica (Tkinter) que compare en tiempo real:
+- una versión NO optimizada
+- una versión optimizada
+
+La aplicación obtiene datos de una API relacionada con el espacio (posición de la ISS)
+y actualiza la información cada pocos segundos. En cada panel se muestran:
+- datos obtenidos
+- tiempo de ejecución (procesado)
+- hora de actualización
+- indicador visual de estado
+- resumen de cProfile (funciones más lentas)
+
+Además, cada panel incluye un botón Ayuda que abre una ventana con la documentación
+(docstrings) de las funciones relevantes.
+
+API usada
+- https://api.wheretheiss.at/v1/satellites/25544
+
+Ejecutar
+- python &quot;Actividad 5/actividad5.3.py&quot;</pre>
+<h2>Clase: App</h2>
+<pre>Aplicación principal: divide la ventana en dos paneles y actualiza datos.</pre>
+<h2>Clase: FastPanel</h2>
+<pre>Versión optimizada (menos recorridos y estructuras adecuadas).</pre>
+<h2>Clase: IssSample</h2>
+<pre>Muestra simplificada de datos de la ISS.
+
+Parámetros
+----------
+timestamp:
+    Tiempo UNIX (segundos).
+latitude:
+    Latitud en grados.
+longitude:
+    Longitud en grados.
+velocity:
+    Velocidad (km/h) según la API.
+altitude:
+    Altitud (km) según la API.
+
+Devuelve
+-------
+IssSample
+    Objeto inmutable con datos numéricos básicos.</pre>
+<h2>Clase: PanelBase</h2>
+<pre>Panel base con UI común para las dos versiones.</pre>
+<h2>Clase: SlowPanel</h2>
+<pre>Versión NO optimizada (intencionadamente ineficiente).</pre>
+<h2>Función: fetch_iss_payload</h2>
+<pre>Descarga el JSON de una API de la ISS (con respaldo).
+
+Intenta primero la API principal (wheretheiss). Si falla por red, usa
+una API alternativa (open-notify). El resultado se normaliza a un dict con:
+- timestamp, latitude, longitude, velocity, altitude
+- source (para mostrar de qué API viene)
+
+Parámetros
+----------
+timeout_s:
+    Timeout de red en segundos.
+
+Devuelve
+-------
+dict
+    Diccionario normalizado.
+
+Lanza
+------
+URLError
+    Si fallan ambas APIs por red.
+ValueError
+    Si el JSON no se puede decodificar.</pre>
+<h2>Función: haversine_km</h2>
+<pre>Distancia aproximada entre dos puntos usando Haversine.
+
+Parámetros
+----------
+lat1, lon1, lat2, lon2:
+    Coordenadas en grados.
+
+Devuelve
+-------
+float
+    Distancia en kilómetros.</pre>
+<h2>Función: main</h2>
+<pre>Punto de entrada del programa.</pre>
+<h2>Función: payload_to_sample</h2>
+<pre>Convierte el payload de la API a un IssSample.
+
+Parámetros
+----------
+payload:
+    Diccionario JSON devuelto por la API.
+
+Devuelve
+-------
+IssSample
+    Muestra con tipos numéricos.</pre>
+<h2>Función: profile_to_text</h2>
+<pre>Convierte un perfil (cProfile) en texto legible (Top N por tiempo acumulado).</pre>
+<h2>Función: show_help_dialog</h2>
+<pre>Abre una ventana emergente con docstrings de las funciones dadas.</pre>
+<h2>Función: unix_to_local_time_str</h2>
+<pre>Convierte un timestamp UNIX a una hora local legible.</pre>
+</body></html>
